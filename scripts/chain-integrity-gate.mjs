@@ -1903,6 +1903,43 @@ const CHECKS = [
     },
     why: "Notification copy is stored, not re-rendered — every user-facing string must be bilingual `عربي · English` or Arabic speakers get English-only alerts",
   })),
+  // The render layer, protected the same way every other adopted fix here is.
+  // It is a new layer and therefore the easiest thing in this repository to
+  // lose: delete one script from a chain and 25 mounting assertions stop
+  // running, while `pnpm test` still prints a wall of green from the static
+  // guards that never noticed.
+  {
+    id: "P-render-layer-chained",
+    file: "artifacts/banco-mobile/package.json",
+    test: (s) => {
+      const pkg = JSON.parse(s);
+      return (
+        typeof pkg.scripts?.["test:render"] === "string" &&
+        /pnpm run test:render-coverage\b/.test(pkg.scripts?.test ?? "") &&
+        /pnpm run test:render(\s|$)/.test(pkg.scripts?.test ?? "")
+      );
+    },
+    why: "The render suite and its coverage guard must stay IN the test chain — a suite that is never invoked reads as coverage while proving nothing",
+  },
+  {
+    id: "P-presence-render-both-halves",
+    file: "artifacts/banco-mobile/components/PresenceDot.tsx",
+    test: (s) => {
+      // Both exports make the same promise: away and unknown indistinguishable.
+      // The allow-list has to be present twice, once per renderer, and the
+      // deny-list form must not creep back for either.
+      const allow = s.match(
+        /if \(presence !== "online" && presence !== "recently"\) return null;/g,
+      );
+      return (
+        allow?.length === 2 &&
+        !/presence === "away"/.test(s) &&
+        !/presence === "unknown"/.test(s)
+      );
+    },
+    why: "PresenceDot and PresenceLabel must BOTH refuse anything outside online/recently — half the guarantee is not the guarantee",
+  },
+
 ];
 
 function main() {

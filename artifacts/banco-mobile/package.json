@@ -37,8 +37,9 @@
     "test:map-chrome": "node --test tests/map-chrome-guard.test.mjs",
     "test:geo-area": "node --test tests/geo-area-guard.test.mjs",
     "test:section-neutrals": "node --test tests/section-neutrals-guard.test.mjs",
+    "test:render-coverage": "node --test tests/render-coverage-guard.test.mjs",
     "test:render": "jest",
-    "test": "pnpm run test:avatar-initial && pnpm run test:presence-privacy && pnpm run test:assistant-identity && pnpm run test:icons && pnpm run test:lib && pnpm run test:resilience && pnpm run test:universal-links && pnpm run test:session-restore && pnpm run test:auth-routes && pnpm run test:section-guard && pnpm run test:materials-core && pnpm run test:i18n && pnpm run test:accounts && pnpm run test:notification-routing && pnpm run test:create-market && pnpm run test:ui-density && pnpm run test:stay-honesty && pnpm run test:car-hero-honesty && pnpm run test:messenger-wiring && pnpm run test:production-wiring && pnpm run test:import-honesty && pnpm run test:import-docs && pnpm run test:scale && pnpm run test:cdn && pnpm run test:map-chrome && pnpm run test:geo-area && pnpm run test:section-neutrals && pnpm run test:render"
+    "test": "pnpm run test:avatar-initial && pnpm run test:presence-privacy && pnpm run test:assistant-identity && pnpm run test:icons && pnpm run test:lib && pnpm run test:resilience && pnpm run test:universal-links && pnpm run test:session-restore && pnpm run test:auth-routes && pnpm run test:section-guard && pnpm run test:materials-core && pnpm run test:i18n && pnpm run test:accounts && pnpm run test:notification-routing && pnpm run test:create-market && pnpm run test:ui-density && pnpm run test:stay-honesty && pnpm run test:car-hero-honesty && pnpm run test:messenger-wiring && pnpm run test:production-wiring && pnpm run test:import-honesty && pnpm run test:import-docs && pnpm run test:scale && pnpm run test:cdn && pnpm run test:map-chrome && pnpm run test:geo-area && pnpm run test:section-neutrals && pnpm run test:render-coverage && pnpm run test:render"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
