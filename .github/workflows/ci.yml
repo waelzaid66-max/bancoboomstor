@@ -136,6 +136,30 @@ jobs:
       - name: Demo seed production guard (static)
         run: pnpm --filter @workspace/api-server run test:seed-guard
 
+  # The mobile pack above reads source files as TEXT and matches patterns; not
+  # one of its tests imports a renderer. That means a screen can fail to bundle
+  # — a bad import, a missing module, a syntax error past the regex — and every
+  # one of those tests still passes. Until this job existed nothing in any
+  # workflow built banco-mobile at all: it appeared in three workflows and ran
+  # `test` in all three.
+  #
+  # `build:web` is `expo export --platform web`, so Metro resolves and bundles
+  # the real dependency graph and the script fails if index.html is not
+  # produced. No secrets: the Clerk key only warns when absent.
+  mobile-build:
+    name: Mobile bundle (Expo web export)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Bundle the app (Metro, web target)
+        run: pnpm --filter @workspace/banco-mobile run build:web
+
   production-gates:
     name: Production gates (static)
     runs-on: ubuntu-latest

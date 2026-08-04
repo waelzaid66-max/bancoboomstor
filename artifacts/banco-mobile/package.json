@@ -37,7 +37,8 @@
     "test:map-chrome": "node --test tests/map-chrome-guard.test.mjs",
     "test:geo-area": "node --test tests/geo-area-guard.test.mjs",
     "test:section-neutrals": "node --test tests/section-neutrals-guard.test.mjs",
-    "test": "pnpm run test:avatar-initial && pnpm run test:presence-privacy && pnpm run test:assistant-identity && pnpm run test:icons && pnpm run test:lib && pnpm run test:resilience && pnpm run test:universal-links && pnpm run test:session-restore && pnpm run test:auth-routes && pnpm run test:section-guard && pnpm run test:materials-core && pnpm run test:i18n && pnpm run test:accounts && pnpm run test:notification-routing && pnpm run test:create-market && pnpm run test:ui-density && pnpm run test:stay-honesty && pnpm run test:car-hero-honesty && pnpm run test:messenger-wiring && pnpm run test:production-wiring && pnpm run test:import-honesty && pnpm run test:import-docs && pnpm run test:scale && pnpm run test:cdn && pnpm run test:map-chrome && pnpm run test:geo-area && pnpm run test:section-neutrals"
+    "test:render": "jest",
+    "test": "pnpm run test:avatar-initial && pnpm run test:presence-privacy && pnpm run test:assistant-identity && pnpm run test:icons && pnpm run test:lib && pnpm run test:resilience && pnpm run test:universal-links && pnpm run test:session-restore && pnpm run test:auth-routes && pnpm run test:section-guard && pnpm run test:materials-core && pnpm run test:i18n && pnpm run test:accounts && pnpm run test:notification-routing && pnpm run test:create-market && pnpm run test:ui-density && pnpm run test:stay-honesty && pnpm run test:car-hero-honesty && pnpm run test:messenger-wiring && pnpm run test:production-wiring && pnpm run test:import-honesty && pnpm run test:import-docs && pnpm run test:scale && pnpm run test:cdn && pnpm run test:map-chrome && pnpm run test:geo-area && pnpm run test:section-neutrals && pnpm run test:render"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -45,11 +46,16 @@
     "@expo/cli": "54.0.23",
     "@expo/ngrok": "^4.1.0",
     "@expo/vector-icons": "15.0.3",
+    "@testing-library/react-native": "^13.3.3",
+    "@types/jest": "^29.5.14",
     "@types/react": "~19.1.10",
     "@types/react-dom": "~19.1.7",
     "babel-plugin-react-compiler": "^19.0.0-beta-e993439-20250117",
     "babel-preset-expo": "~54.0.11",
     "eas-cli": "^21.4.0",
+    "jest": "^29.7.0",
+    "jest-expo": "~54.0.17",
+    "react-test-renderer": "19.1.0",
     "typescript": "~5.9.3"
   },
   "dependencies": {

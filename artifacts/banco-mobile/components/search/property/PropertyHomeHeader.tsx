@@ -395,11 +395,23 @@ export function PropertyHomeHeader({
 
         <View style={styles.brandSpacer} />
 
-        {/* POWERED BY stacks ABOVE the BANCO mark rather than sitting beside it.
-            Side by side the two cost ~110dp of a 358dp row and the section name
-            truncated to "PRO…" — identity damage, which is the one thing this
-            item must not do. Stacked they cost ~58dp, and the label reads as
-            what it always was: a caption on the logo, not a word next to it. */}
+        {/* POWERED BY is a CAPTION on the BANCO mark — stacked directly over it
+            in a column as wide as the logo (58dp), not a line of its own.
+
+            Two sessions fixed the same owner report from different structures.
+            main's 8c86932 moved the label into `poweredRow` beside the logo,
+            which is right for the THREE-ROW brand block it was written against.
+            This branch replaced that block with a single `brandLockup` row, so
+            that fix has nothing left to move: the label is already inside the
+            row here. What is kept is the column rather than the side-by-side,
+            because side by side the label and the mark cost ~110dp of a 358dp
+            row and "PROPERTIES" truncated to "PRO…" — identity damage, which is
+            the one thing this item must not do. Stacked they cost ~58dp, and
+            they add no height at all: 8pt label + 14dp logo = ~24dp, under the
+            32dp B-mark that already sets the row.
+
+            FacilitiesHomeHeader is the reference for the inline shape; if the
+            manager wants it here too, the swap is this block plus the style. */}
         <View style={styles.poweredCol}>
           <AppText style={styles.poweredLabel} numberOfLines={1}>
             {t("booking.poweredBy")}
@@ -732,6 +744,8 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_500Medium",
     color: ASH,
   },
+  // No `marginBottom`: it only made sense when this sat on a line of its own,
+  // and it does not — see the caption comment on `poweredCol` above.
   poweredLabel: {
     fontSize: 8,
     fontFamily: "Inter_500Medium",
