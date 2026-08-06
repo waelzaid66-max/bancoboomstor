@@ -27,7 +27,15 @@ git log --format='%B' | grep -oE 'session_[A-Za-z0-9]+' | sort | uniq -c | sort 
 
 ---
 
-# 2) 🔴 الخرايط — **محدش اشتغل عليها في الريبو ده. ولا كوميت واحد.**
+# 2) 🔴 الخرايط — مفيش شغل خرايط **نازل على `main`**
+
+> **⚠️ تصحيح ذاتي (2026-08-06):** النسخة الأولى من القسم ده كتبت «محدش
+> اشتغل على الخرايط في الريبو ده — ولا كوميت واحد». **ده كان غلط منهجي:**
+> `git log -- <path>` بيفحص الفرع الحالي بس، وأنا شغّلته على `main` وصغته
+> كأنه على الريبو كله. `git log --all` بيطلّع **تلات كوميتات خرايط حقيقية**
+> على `claude/headers-dynamic-polish` (08-04): `127e3d7` · `a4c1eb0` ·
+> `34709b4`. الصح: **الشغل موجود وجاهز ومحبوس، مش غير موجود.**
+> التفاصيل في `TO-CODEX-CORRECTIONS-AND-ICON-TYPE-GAP-AR.md`.
 
 ```bash
 git log --oneline -- 'artifacts/banco-mobile/components/search/SearchResultsMap*' \

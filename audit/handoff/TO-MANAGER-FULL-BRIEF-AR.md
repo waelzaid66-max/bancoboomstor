@@ -74,7 +74,7 @@ export const Feather = IconBase as unknown as VectorIcons["Feather"];
 | `react-native-svg` | 15.12.1 |
 | `lucide-react-native` | 0.545.0 |
 | `expo` | ~54.0.36 |
-| أسماء مربوطة في السجل | **215** |
+| أسماء مربوطة في السجل | **194** | ← *صُحّح 08-06؛ الرقم الأول كان `grep -c ":"` وهو بيعد أي سطر فيه نقطتين*
 
 ## 🔴 ثلاث مخاطر لازم تعرفها
 
