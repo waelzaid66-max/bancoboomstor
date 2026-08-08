@@ -311,6 +311,11 @@ const ICONS: Record<string, LucideIcon> = {
   "images-outline": Images,
   "inbox": Inbox,
   "info": Info,
+  // banks screen (business/banks.tsx) — v4.1.4 names that rendered the fallback:
+  "alert-circle-outline": CircleAlert,
+  "file-document-outline": FileText,
+  "information-outline": Info,
+  "upload": CloudUpload,
   // StayCard / SmartAssetCard / settings / rentals hub (Ionicon names):
   "key": Key,
   "key-outline": Key,
