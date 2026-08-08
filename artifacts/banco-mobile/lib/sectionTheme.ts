@@ -38,16 +38,11 @@ export function sectionAccent(category: Category | null | undefined): string {
  *
  * A tint has no identity of its own. It is the section's accent, quieter.
  */
-export function sectionAccentAlpha(
-  category: Category | null | undefined,
-  alpha: number,
-): string {
-  const hex = sectionAccent(category);
-  const r = parseInt(hex.slice(1, 3), 16);
-  const g = parseInt(hex.slice(3, 5), 16);
-  const b = parseInt(hex.slice(5, 7), 16);
-  return `rgba(${r},${g},${b},${alpha})`;
-}
+// sectionAccentAlpha is defined once, further down (the clamped implementation).
+// A second, un-clamped copy used to live here and landed via a clean merge (no
+// conflict markers), so two `export function sectionAccentAlpha` sat in one
+// module — a TS2323 (cannot redeclare) + TS2393 (duplicate implementation) build
+// break. Removed; the canonical clamped definition below is the only one.
 
 /**
  * Banks & Financiers is its own world — the ONLY section that steps outside the
