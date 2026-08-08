@@ -22,4 +22,9 @@ config.resolver.nodeModulesPaths = [
 ];
 config.resolver.disableHierarchicalLookup = false;
 
+// Metro crashes (ENOENT) if it watches Replit's transient skill dirs that the
+// environment deletes mid-session (.local/skills/.old-*). Exclude them so the
+// file watcher doesn't follow a path that vanishes underneath it.
+config.resolver.blockList = [/\.local\/skills\/\.old-.*/];
+
 module.exports = config;
